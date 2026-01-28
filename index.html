@@ -23,8 +23,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: 1; 
-            /* A imagem vai escurecer um pouco via CSS aqui para garantir leitura */
-            filter: brightness(0.6);
+            filter: brightness(0.5); /* Escurece o fundo para destacar o neon */
         }
 
         .wrapper {
@@ -40,16 +39,16 @@
         .card {
             width: 100%;
             max-width: 420px;
-            /* Fundo Verde Escuro Translúcido (Amazonian Glass) */
-            background: rgba(12, 36, 20, 0.75); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(74, 222, 128, 0.2); /* Borda verde suave */
+            /* VERDE MUITO ESCURO (Dark Jungle) */
+            background: rgba(5, 20, 10, 0.85); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(50, 255, 50, 0.1); 
             border-radius: 24px;
             padding: 40px 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
             color: #fff;
-            box-sizing: border-box; /* Garante alinhamento */
+            box-sizing: border-box;
         }
 
         h1 {
@@ -62,14 +61,14 @@
 
         .subtitle {
             text-align: center;
-            /* Verde Brilhante (Neon Lime) */
-            color: #4ade80; 
+            /* VERDE LIMÃO NEON (Cyber Lime) */
+            color: #ccff00; 
             font-size: 14px;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 30px;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
         }
 
         form {
@@ -79,10 +78,9 @@
             width: 100%;
         }
 
-        /* Correção de Alinhamento: Box-sizing em tudo */
         input, select, textarea, button {
             width: 100%;
-            box-sizing: border-box; /* Essencial para alinhar */
+            box-sizing: border-box;
             border-radius: 14px;
             font-family: inherit;
             outline: none;
@@ -91,19 +89,19 @@
         input, select, textarea {
             padding: 16px;
             border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5); /* Mais escuro para contraste */
             color: #fff;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
         }
 
         input:focus, select:focus, textarea:focus {
-            border-color: #4ade80; /* Foco verde */
+            border-color: #ccff00; /* Borda Limão */
+            box-shadow: 0 0 0 2px rgba(204, 255, 0, 0.1);
         }
 
         select {
             appearance: none;
-            /* Seta customizada branca */
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 15px center;
@@ -118,30 +116,31 @@
 
         button {
             padding: 18px;
-            /* Botão Verde Brilhante */
-            background: #4ade80; 
-            color: #064e3b; /* Texto escuro para contraste */
+            /* BOTÃO VERDE LIMÃO NEON */
+            background: #ccff00; 
+            color: #000; /* Texto preto para leitura máxima */
             border: none;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             margin-top: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: transform 0.2s, background 0.2s;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
         }
         
         button:hover {
-            background: #22c55e;
+            background: #b3e600;
             transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.4);
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Imagem da Amazônia (Wikimedia Commons - Alta Resolução) -->
-    <img id="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Amazon_river_boat.jpg/2560px-Amazon_river_boat.jpg" alt="Amazon Rainforest">
+    <!-- TENTATIVA 3 DE IMAGEM: Servidor Pexels (Geralmente desbloqueado) -->
+    <img id="bg-img" src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=3840&h=2160&dpr=1" alt="Amazon Rainforest" onerror="this.src='https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2000';">
     
     <div class="wrapper">
         <div class="card">
