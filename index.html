@@ -14,7 +14,7 @@
             background-color: #000;
         }
 
-        /* TÉCNICA INFALÍVEL: Imagem como elemento HTML, não CSS */
+        /* TÉCNICA INFALÍVEL: Imagem como elemento HTML */
         #bg-img {
             position: fixed;
             top: 0;
@@ -22,24 +22,14 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: 1; /* Camada Base */
-            opacity: 0.8; /* Leve escurecimento natural */
-        }
-
-        /* Overlay para garantir leitura */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0,0,0,0.4); /* Escurece 40% apenas */
-            z-index: 2;
+            z-index: 1; 
+            /* A imagem vai escurecer um pouco via CSS aqui para garantir leitura */
+            filter: brightness(0.6);
         }
 
         .wrapper {
             position: relative;
-            z-index: 10; /* Bem acima de tudo */
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -50,14 +40,16 @@
         .card {
             width: 100%;
             max-width: 420px;
-            background: rgba(30, 30, 40, 0.65); /* Vidro Escuro */
+            /* Fundo Verde Escuro Translúcido (Amazonian Glass) */
+            background: rgba(12, 36, 20, 0.75); 
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.2); /* Borda verde suave */
             border-radius: 24px;
             padding: 40px 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             color: #fff;
+            box-sizing: border-box; /* Garante alinhamento */
         }
 
         h1 {
@@ -70,70 +62,87 @@
 
         .subtitle {
             text-align: center;
-            color: #a78bfa; /* Roxo Apple */
+            /* Verde Brilhante (Neon Lime) */
+            color: #4ade80; 
             font-size: 14px;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 30px;
-            font-weight: 600;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+            width: 100%;
         }
 
-        input, select, textarea {
+        /* Correção de Alinhamento: Box-sizing em tudo */
+        input, select, textarea, button {
             width: 100%;
-            padding: 16px;
+            box-sizing: border-box; /* Essencial para alinhar */
             border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.3);
-            color: #fff;
-            font-size: 16px;
             font-family: inherit;
             outline: none;
         }
 
+        input, select, textarea {
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #4ade80; /* Foco verde */
+        }
+
         select {
             appearance: none;
+            /* Seta customizada branca */
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 15px;
+            cursor: pointer;
         }
 
         textarea {
-            height: 80px;
+            height: 90px;
             resize: none;
         }
 
         button {
             padding: 18px;
-            background: #8b5cf6;
-            color: white;
+            /* Botão Verde Brilhante */
+            background: #4ade80; 
+            color: #064e3b; /* Texto escuro para contraste */
             border: none;
-            border-radius: 14px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, background 0.2s;
         }
         
         button:hover {
-            background: #7c3aed;
+            background: #22c55e;
+            transform: scale(1.02);
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Trocando para link direto da Wikimedia (mais estável que download local falho) -->
-    <img id="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="Background">
+    <!-- Imagem da Amazônia (Wikimedia Commons - Alta Resolução) -->
+    <img id="bg-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Amazon_river_boat.jpg/2560px-Amazon_river_boat.jpg" alt="Amazon Rainforest">
     
-    <div class="overlay"></div>
-
     <div class="wrapper">
         <div class="card">
             <h1>Convite</h1>
