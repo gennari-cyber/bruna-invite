@@ -6,13 +6,11 @@
     <title>Convite</title>
     <style>
         :root {
-            /* Nova Paleta Criativa: Deep Midnight & Neon Accents */
-            --bg-overlay: linear-gradient(135deg, rgba(16, 24, 45, 0.4), rgba(76, 29, 149, 0.2));
             --glass-bg: rgba(25, 25, 35, 0.55);
             --glass-border: rgba(255, 255, 255, 0.15);
             --primary-text: #ffffff;
             --secondary-text: #aeb5c0;
-            --accent-color: #a78bfa; /* Soft Purple */
+            --accent-color: #a78bfa; 
             --button-bg: #8b5cf6;
             --button-text: #ffffff;
             --input-bg: rgba(0, 0, 0, 0.3);
@@ -28,25 +26,25 @@
             padding: 0;
             height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-            background: #0f172a; /* Fallback color */
+            background: #0f172a; 
             overflow: hidden;
             color: var(--primary-text);
         }
 
-        /* Imagem Local Garantida */
+        /* Camada 1: A Foto (Base) */
         .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2; /* Atrás do overlay */
+            z-index: 1; /* Positivo para garantir renderização sobre o body */
             background-image: url('./bg.jpg'); 
             background-size: cover;
             background-position: center;
         }
 
-        /* Overlay Suave para Leitura (Cinematic Dark) */
+        /* Camada 2: O Filtro (Meio) */
         .overlay {
             display: block;
             position: fixed;
@@ -54,23 +52,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.7));
-            backdrop-filter: none; /* Removi o blur da foto para ela ficar nítida */
+            z-index: 2; /* Sobre a foto */
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.8));
+            pointer-events: none;
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: var(--bg-overlay);
-            backdrop-filter: blur(3px); /* Leve blur na foto para destacar o texto */
-        }
-
+        /* Camada 3: O Conteúdo (Topo) */
         .wrapper {
+            position: relative;
+            z-index: 3; /* Sobre tudo */
             display: flex;
             align-items: center;
             justify-content: center;
