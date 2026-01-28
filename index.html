@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation</title>
     
-    <!-- Google Fonts: Playfair Display (Elegant Serif) + Montserrat (Clean Sans) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
         }
         
         .bg-image {
-            /* Imagem mais abstrata, texturizada e moody (dark waves/mist) */
             background-image: url('https://images.unsplash.com/photo-1534081333815-ae5019106622?q=80&w=2500&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
@@ -29,7 +28,7 @@
             width: 100%;
             position: absolute;
             z-index: -1;
-            filter: brightness(0.6) grayscale(20%);
+            filter: brightness(0.5) grayscale(20%);
             animation: slowZoom 30s infinite alternate;
         }
 
@@ -47,16 +46,16 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            padding: 4rem 3rem;
+            padding: 3rem 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #fff;
             text-align: center;
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 1.2s ease-out forwards;
@@ -70,62 +69,87 @@
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             font-style: italic;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin: 0 0 0.5rem 0;
             color: #fff;
-            line-height: 1.1;
         }
 
         p.subtitle {
             font-weight: 300;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 3.5rem;
-            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2.5rem;
+            margin-top: 5px;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem; /* Mais espaçamento */
+            gap: 1.2rem;
+            text-align: left;
         }
 
-        .input-group {
-            position: relative;
-        }
-
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 10px 0;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             outline: none;
-            transition: border-color 0.3s ease, background 0.3s;
-            box-sizing: border-box; /* Garante que padding não estoure largura */
+            transition: border-color 0.3s ease;
+            border-radius: 0;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            color: rgba(255,255,255,0.7); /* Lighter when unselected */
+        }
+        
+        select:valid {
+            color: #fff; /* White when selected */
+        }
+
+        select option {
+            background: #111;
+            color: #fff;
+            padding: 10px;
+        }
+
+        /* Custom dropdown arrow */
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '▼';
+            font-size: 0.5rem;
+            color: rgba(255,255,255,0.4);
+            position: absolute;
+            right: 0;
+            top: 15px;
+            pointer-events: none;
         }
 
         textarea {
             resize: none;
-            height: 40px; /* Começa menor */
+            height: 30px;
             transition: height 0.3s;
         }
         
         textarea:focus {
-            height: 80px;
+            height: 60px;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             border-bottom-color: #fff;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.02));
         }
 
-        /* Labels flutuantes ou placeholders minimalistas */
         ::placeholder {
             color: rgba(255, 255, 255, 0.4);
             font-weight: 300;
@@ -135,25 +159,25 @@
         }
 
         button {
-            margin-top: 20px;
-            background: transparent;
+            margin-top: 15px;
+            background: rgba(255,255,255,0.1);
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 16px;
-            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px;
+            font-size: 0.7rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             transition: all 0.4s ease;
+            width: 100%;
         }
 
         button:hover {
             background: #fff;
             color: #000;
             border-color: #fff;
-            box-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
     </style>
@@ -164,15 +188,51 @@
 
     <div class="container">
         <div class="card">
-            <h1>The Invitation</h1>
+            <h1>Invitation</h1>
             <p class="subtitle">For Bruna</p>
 
             <form action="https://formsubmit.co/Gennari@parallax.vc" method="POST">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://gennari-cyber.github.io/bruna-invite/">
+                
                 <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Contact" required>
-                <textarea name="message" placeholder="Message" required></textarea>
+                
+                <!-- Mood Selection -->
+                <div class="select-wrapper">
+                    <select name="mood" required>
+                        <option value="" disabled selected hidden>PREFERENCE (BAR OR RESTAURANT?)</option>
+                        <option value="Bar">Bar</option>
+                        <option value="Restaurante">Restaurante</option>
+                        <option value="Surprise me">Surpreenda-me</option>
+                    </select>
+                </div>
+
+                <!-- Time Selection -->
+                <div class="select-wrapper">
+                    <select name="time" required>
+                        <option value="" disabled selected hidden>TIME</option>
+                        <option value="19:00">19:00</option>
+                        <option value="19:30">19:30</option>
+                        <option value="20:00">20:00</option>
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                    </select>
+                </div>
+
+                <!-- After Selection -->
+                <div class="select-wrapper">
+                    <select name="after" required>
+                        <option value="" disabled selected hidden>THE AFTER?</option>
+                        <option value="Decidimos na hora">Decidimos na hora</option>
+                        <option value="Outro barzinho">Outro barzinho</option>
+                        <option value="Melhor nao falar aqui">Melhor não falar aqui</option>
+                    </select>
+                </div>
+
+                <textarea name="message" placeholder="EXTRA NOTES"></textarea>
+                
                 <button type="submit">Confirm</button>
             </form>
         </div>
